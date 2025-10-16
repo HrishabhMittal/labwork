@@ -190,10 +190,7 @@ void test_case(const std::string& name, const std::vector<int>& base) {
         run2(bubble_early,    "BubbleEarly");
         run2(selection_sort,  "SelectionSort");
         run2(insertion_sort,  "InsertionSort");
-    } else {
-        std::cout << "  [Skipping O(n^2) sorts for large n]\n";
     }
-
     run2(quick_sort_first, "QuickFirst");
     run2(quick_sort_last,  "QuickLast");
     run2(quick_sort_rand,  "QuickRandom");
@@ -204,6 +201,16 @@ void test_case(const std::string& name, const std::vector<int>& base) {
     std::cout << std::endl;
 }
 
+std::vector<int> rev(int n) {
+    std::vector<int> arr;
+    for (int i=0;i<n;i++) arr.push_back(n-i);
+    return arr;
+}
+std::vector<int> sorted(int n) {
+    std::vector<int> arr;
+    for (int i=0;i<n;i++) arr.push_back(i);
+    return arr;
+}
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
@@ -212,8 +219,8 @@ int main() {
     std::vector<std::vector<int>> tests = {
         {},
         {42},
-        {1,2,3,4,5,6,7,8,9,10},
-        {10,9,8,7,6,5,4,3,2,1},
+        sorted(1000),
+        rev(1000),
         std::vector<int>(10, 5)
     };
 
