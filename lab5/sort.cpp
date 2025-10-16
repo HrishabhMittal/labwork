@@ -18,7 +18,7 @@ Stats run_sort(Func sort_func, const std::vector<int>& arr) {
     return st;
 }
 
-// 1. Bubble Sort
+
 void bubble_basic(std::vector<int>& a, Stats& st) {
     int n = static_cast<int>(a.size());
     for(int i = 0; i < n; i++) {
@@ -47,7 +47,7 @@ void bubble_early(std::vector<int>& a, Stats& st) {
     }
 }
 
-// 2. Selection Sort
+
 void selection_sort(std::vector<int>& a, Stats& st) {
     int n = static_cast<int>(a.size());
     for(int i = 0; i + 1 < n; i++) {
@@ -63,7 +63,7 @@ void selection_sort(std::vector<int>& a, Stats& st) {
     }
 }
 
-// 3. Insertion Sort
+
 void insertion_sort(std::vector<int>& a, Stats& st) {
     int n = static_cast<int>(a.size());
     for(int i = 1; i < n; i++) {
@@ -80,7 +80,7 @@ void insertion_sort(std::vector<int>& a, Stats& st) {
     }
 }
 
-// 4. Quick Sort Variants
+
 int partition_first(std::vector<int>& a, int l, int r, Stats& st) {
     int pivot = a[l], i = l + 1;
     for(int j = l + 1; j <= r; j++) {
@@ -117,7 +117,7 @@ void quick_sort_first(std::vector<int>& a, Stats& st) { quick_rec(a, 0, static_c
 void quick_sort_last (std::vector<int>& a, Stats& st) { quick_rec(a, 0, static_cast<int>(a.size())-1, st, 1); }
 void quick_sort_rand (std::vector<int>& a, Stats& st) { quick_rec(a, 0, static_cast<int>(a.size())-1, st, 2); }
 
-// 5. Merge Sort
+
 void merge_merge(std::vector<int>& a, int l, int m, int r, Stats& st) {
     int n1 = m - l + 1, n2 = r - m;
     std::vector<int> L(a.begin()+l, a.begin()+m+1),
@@ -151,7 +151,7 @@ void merge_sort_it(std::vector<int>& a, Stats& st) {
     }
 }
 
-// 6. Heap Sort
+
 void heapify(std::vector<int>& a, int n, int i, Stats& st) {
     int largest = i, l = 2*i+1, r = 2*i+2;
     if(l < n) { st.comps++; if(a[l] > a[largest]) largest = l; }
@@ -172,7 +172,7 @@ void heap_sort(std::vector<int>& a, Stats& st) {
     }
 }
 
-// Test harness with skip for large n
+
 void test_case(const std::string& name, const std::vector<int>& base) {
     std::cout << "=== " << name << " (n=" << base.size() << ") ===\n";
     bool small = base.size() <= 10000;
@@ -210,11 +210,11 @@ int main() {
 
     std::srand(static_cast<unsigned>(std::time(nullptr)));
     std::vector<std::vector<int>> tests = {
-        {},                          // empty
-        {42},                        // single-element
-        {1,2,3,4,5,6,7,8,9,10},      // sorted
-        {10,9,8,7,6,5,4,3,2,1},      // reverse-sorted
-        std::vector<int>(10, 5)      // identical
+        {},
+        {42},
+        {1,2,3,4,5,6,7,8,9,10},
+        {10,9,8,7,6,5,4,3,2,1},
+        std::vector<int>(10, 5)
     };
 
     std::vector<int> large(100000);
